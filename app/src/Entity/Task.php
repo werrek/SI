@@ -1,17 +1,26 @@
 <?php
+/**
+ * Task entity.
+ */
 
 namespace App\Entity;
 
-use App\Repository\TaskRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TaskRepository::class)
+ * Class Task.
+ *
+ * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  * @ORM\Table(name="tasks")
  */
 class Task
 {
     /**
+     * Primary key.
+     *
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -19,58 +28,102 @@ class Task
     private $id;
 
     /**
+     * Created at.
+     *
+     * @var DateTimeInterface
+     *
      * @ORM\Column(type="datetime")
      */
-    private $created;
+    private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * Updated at.
+     *
+     * @var DateTimeInterface
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * Title.
+     *
+     * @var string
+     *
+     * @ORM\Column(
+     *     type="string",
+     *     length=255,
+     * )
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=300, nullable=true)
+     * Getter for Id.
+     *
+     * @return int|null Result
      */
-    private $description;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCreated(): ?\DateTimeInterface
+    /**
+     * Getter for Created At.
+     *
+     * @return \DateTimeInterface|null Created at
+     */
+    public function getCreatedAt(): ?DateTimeInterface
     {
-        return $this->created;
+        return $this->createdAt;
     }
 
-    public function setCreated(\DateTimeInterface $created): self
+    /**
+     * Setter for Created at.
+     *
+     * @param \DateTimeInterface $createdAt Created at
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): void
     {
-        $this->created = $created;
-
-        return $this;
+        $this->createdAt = $createdAt;
     }
 
+    /**
+     * Getter for Updated at.
+     *
+     * @return \DateTimeInterface|null Updated at
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Setter for Updated at.
+     *
+     * @param \DateTimeInterface $updatedAt Updated at
+     */
+    public function setUpdatedAt(DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Getter for Title.
+     *
+     * @return string|null Title
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    /**
+     * Setter for Title.
+     *
+     * @param string $title Title
+     */
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
     }
 }
