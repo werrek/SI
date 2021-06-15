@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title_note_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="title_of_page">
+        <h1>{{ 'title_notes_list'|trans }}</h1>
+    </div>
+    <h3>{{ 'title_note_list'|trans }}</h3>
+    {% if pagination is defined and pagination.items|length %}
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label_title'|trans, 'note.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label_description'|trans, 'note.description') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label_date'|trans, 'note.date') }}</th>
+                <th>{{ 'label_category'|trans }}</th>
+                <th>{{ 'label_actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for note in pagination.items %}
+                {% if date(note.date) < date() and date(note.date) > date('-7days') %}
+                    <tr>
+                        <td>{{ note.title }}</td>
+                        <td>{{ note.description }}</td>
+                        <td>{{ note.date|format_datetime('full') }}</td>
+                        <td>{{ note.category.title }}</td>
+                        <td>
+                            <a href="{{ url('note_show', {id: note.id}) }}" title="{{ 'action_view'|trans }}">
+                                {{ 'action_view'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <p>
+            {{ 'message_empty_list'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

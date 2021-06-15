@@ -1,0 +1,10 @@
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title_task_create',
+        attr: {
+            method: 'POST',
+            action: url('task_create')
+        },
+        back_to_list_path: 'task_index',
+    } %}
+{% endblock %}

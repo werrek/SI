@@ -1,0 +1,11 @@
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title_note_delete',
+        page_title_param: {'%id%': note.id},
+        attr: {
+            method: 'DELETE',
+            action: url('note_delete', {'id': note.id}),
+        },
+        back_to_list_path: 'note_index',
+    } %}
+{% endblock %}

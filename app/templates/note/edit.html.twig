@@ -1,0 +1,11 @@
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title_note_edit',
+        page_title_param: {'%id%': note.id},
+        attr: {
+            method: 'PUT',
+            action: url('note_edit', {'id': note.id}),
+        },
+        back_to_list_path: 'note_index',
+    } %}
+{% endblock %}

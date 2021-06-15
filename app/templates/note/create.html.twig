@@ -1,0 +1,10 @@
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title_note_create',
+        attr: {
+            method: 'POST',
+            action: url('note_create')
+        },
+        back_to_list_path: 'note_index',
+    } %}
+{% endblock %}
