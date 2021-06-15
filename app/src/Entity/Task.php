@@ -5,13 +5,12 @@
 
 namespace App\Entity;
 
-use DateTimeInterface;
+use App\Repository\TaskRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Task.
- *
- * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TaskRepository", repositoryClass=TaskRepository::class)
  * @ORM\Table(name="tasks")
  */
 class Task
@@ -21,41 +20,44 @@ class Task
      *
      * @var int
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * Created at.
-     *
-     * @var DateTimeInterface
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * Updated at.
-     *
-     * @var DateTimeInterface
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
 
     /**
      * Title.
      *
      * @var string
      *
-     * @ORM\Column(
-     *     type="string",
-     *     length=255,
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3"
      * )
+     * @Assert\Regex("/^[a-zA-Z]+$/")
      */
     private $title;
+
+    /**
+     * Description.
+     *
+     * @var string
+     *
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3"
+     * )
+     * @Assert\Regex("/^[a-zA-Z]+$/")
+     */
+    private $description;
 
     /**
      * Getter for Id.
@@ -68,49 +70,9 @@ class Task
     }
 
     /**
-     * Getter for Created At.
-     *
-     * @return \DateTimeInterface|null Created at
-     */
-    public function getCreatedAt(): ?DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Setter for Created at.
-     *
-     * @param \DateTimeInterface $createdAt Created at
-     */
-    public function setCreatedAt(DateTimeInterface $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Getter for Updated at.
-     *
-     * @return \DateTimeInterface|null Updated at
-     */
-    public function getUpdatedAt(): ?DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Setter for Updated at.
-     *
-     * @param \DateTimeInterface $updatedAt Updated at
-     */
-    public function setUpdatedAt(DateTimeInterface $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
      * Getter for Title.
      *
-     * @return string|null Title
+     * @return string|null Name
      */
     public function getTitle(): ?string
     {
@@ -121,9 +83,38 @@ class Task
      * Setter for Title.
      *
      * @param string $title Title
+     *
+     * @return Task
+     *
      */
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Getter for Description.
+     *
+     * @return string|null Desctription
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Setter for Description.
+     *
+     * @param string $description Description
+     *
+     * @return Task
+     */
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
