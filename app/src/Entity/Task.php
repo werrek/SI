@@ -38,7 +38,6 @@ class Task
      * @Assert\Length(
      *     min="3"
      * )
-     * @Assert\Regex("/^[a-zA-Z]+$/")
      */
     private $title;
 
@@ -47,7 +46,6 @@ class Task
      *
      * @var string
      *
-     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\Type(type="string")
@@ -55,7 +53,6 @@ class Task
      * @Assert\Length(
      *     min="3"
      * )
-     * @Assert\Regex("/^[a-zA-Z]+$/")
      */
     private $description;
 
@@ -85,7 +82,6 @@ class Task
      * @param string $title Title
      *
      * @return Task
-     *
      */
     public function setTitle(string $title): self
     {

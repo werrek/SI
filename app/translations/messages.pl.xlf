@@ -6,6 +6,10 @@
                 <source>label_actions</source>
                 <target>Akcje</target>
             </trans-unit>
+            <trans-unit id="title_category_edit">
+                <source>title_category_edit</source>
+                <target>Edytuj</target>
+            </trans-unit>
             <trans-unit id="label_id">
                 <source>label_id</source>
                 <target>Id</target>
@@ -52,7 +56,7 @@
             </trans-unit>
             <trans-unit id="label_updated_at">
                 <source>label_updated_at</source>
-                <target>Data</target>
+                <target>Edytowano</target>
             </trans-unit>
             <trans-unit id="action_view">
                 <source>action_view</source>
@@ -92,7 +96,7 @@
             </trans-unit>
             <trans-unit id="title_notes_list">
                 <source>title_notes_list</source>
-                <target>Lista !!!!!!!! napraw zadania</target>
+                <target>Ostatnio dodane notatki</target>
             </trans-unit>
             <trans-unit id="title_category_delete">
                 <source>title_category_delete</source>
@@ -104,7 +108,7 @@
             </trans-unit>
             <trans-unit id="title_note_list">
                 <source>title_note_list</source>
-                <target>Notatki</target>
+                <target>Lista notatek</target>
             </trans-unit>
             <trans-unit id="label_date">
                 <source>label_date</source>
@@ -129,6 +133,10 @@
             <trans-unit id="message_updated_successfully">
                 <source>message_updated_successfully</source>
                 <target>Zedytowano</target>
+            </trans-unit>
+            <trans-unit id="note_delete">
+                <source>note_delete</source>
+                <target>Usuń rekord</target>
             </trans-unit>
             <trans-unit id="title_note_delete">
                 <source>title_note_delete</source>
@@ -212,7 +220,7 @@
             </trans-unit>
             <trans-unit id="Sign_in_message">
                 <source>Sign_in_message</source>
-                <target>Proszę się zalogować</target>
+                <target>Wpisz dane logowania</target>
             </trans-unit>
             <trans-unit id="message_form_error">
                 <source>message_form_error</source>

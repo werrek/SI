@@ -6,8 +6,8 @@
 namespace App\Entity;
 
 use App\Repository\NoteRepository;
-use Doctrine\ORM\Mapping as ORM;
 use DateTimeInterface;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,8 +37,6 @@ class Note
      * @Assert\DateTime
      */
     private $date;
-
-
 
     /**
      * Title.
@@ -70,7 +68,7 @@ class Note
      */
     private $description;
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="lists", fetch="EXTRA_LAZY")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="notes", fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -112,7 +110,7 @@ class Note
     /**
      * Getter for Description.
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription(): ?string
     {
@@ -136,7 +134,7 @@ class Note
     /**
      * Getter for Title.
      *
-     * @return string|null
+     * @return string
      */
     public function getTitle(): ?string
     {
@@ -145,7 +143,8 @@ class Note
 
     /**
      * Setter for Title.
-     * @param string $title Title
+     *
+     * @param string|null $title
      *
      * @return $this
      */
@@ -157,7 +156,7 @@ class Note
     }
 
     /**
-     * @return Category|null
+     * @return Category
      */
     public function getCategory(): ?Category
     {
@@ -167,7 +166,7 @@ class Note
     /**
      * @param Category|null $category
      *
-     * @return $this
+     * @return Note
      */
     public function setCategory(?Category $category): self
     {

@@ -21,7 +21,7 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
      */
     public function loadData(ObjectManager $manager): void
     {
-        $this->createMany(10, 'notes', function () {
+        $this->createMany(20, 'notes', function () {
             $note = new Note();
             $note->setTitle($this->faker->sentence);
             $note->setDescription($this->faker->sentence);

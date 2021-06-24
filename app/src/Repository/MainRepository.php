@@ -7,8 +7,8 @@ namespace App\Repository;
 
 use App\Entity\Note;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * Class MainRepository.
@@ -29,7 +29,7 @@ class MainRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 50;
 
     /**
      * MainRepository constructor.
@@ -49,9 +49,8 @@ class MainRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('note.date', 'ASC');
+            ->orderBy('note.date', 'DESC');
     }
-
 
     /**
      * Get or create new query builder.

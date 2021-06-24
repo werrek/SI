@@ -7,8 +7,10 @@ namespace App\Repository;
 
 use App\Entity\Note;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * Class NoteRepository.
@@ -29,12 +31,12 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * EventRepository constructor.
      *
-     * @param \Doctrine\Persistence\ManagerRegistry $registry Manager registry
+     * @param ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -44,10 +46,10 @@ class NoteRepository extends ServiceEntityRepository
     /**
      * Save record.
      *
-     * @param \App\Entity\Note $note Note entity
+     * @param Note $note Note entity
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function save(Note $note): void
     {
@@ -58,10 +60,10 @@ class NoteRepository extends ServiceEntityRepository
     /**
      * Delete record.
      *
-     * @param \App\Entity\Note $note Note entity
+     * @param Note $note Note entity
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function delete(Note $note): void
     {
@@ -77,7 +79,7 @@ class NoteRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('note.date', 'ASC');
+            ->orderBy('note.date', 'DESC');
     }
 
     /**
@@ -87,7 +89,7 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query Builder
      */
-    public function queryLikeCategory($category): QueryBuilder
+    public function queryLikeCategory(?string $category): QueryBuilder
     {
         if (null === $category) {
             return $this->queryAll();

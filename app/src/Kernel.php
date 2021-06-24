@@ -1,5 +1,12 @@
 <?php
-
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace App;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -12,13 +19,18 @@ use Symfony\Component\Routing\RouteCollectionBuilder;
 /**
  * Class Kernel
  */
-
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
+    /**
+     *
+     */
     private const CONFIG_EXTS = '.{php,xml,yaml,yml}';
 
+    /**
+     * @return iterable
+     */
     public function registerBundles(): iterable
     {
         $contents = require $this->getProjectDir().'/config/bundles.php';
@@ -29,6 +41,9 @@ class Kernel extends BaseKernel
         }
     }
 
+    /**
+     * @return string
+     */
     public function getProjectDir(): string
     {
         return \dirname(__DIR__);

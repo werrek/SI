@@ -79,7 +79,6 @@ class Category
      */
     private $title;
 
-
     /**
      * Code.
      *
@@ -126,7 +125,7 @@ class Category
     /**
      * Getter for Created At.
      *
-     * @return \DateTimeInterface|null Created at
+     * @return DateTimeInterface|null Created at
      */
     public function getCreatedAt(): ?DateTimeInterface
     {
@@ -136,7 +135,7 @@ class Category
     /**
      * Setter for Created at.
      *
-     * @param \DateTimeInterface $createdAt Created at
+     * @param DateTimeInterface $createdAt Created at
      */
     public function setCreatedAt(DateTimeInterface $createdAt): void
     {
@@ -146,7 +145,7 @@ class Category
     /**
      * Getter for Updated at.
      *
-     * @return \DateTimeInterface|null Updated at
+     * @return DateTimeInterface|null Updated at
      */
     public function getUpdatedAt(): ?DateTimeInterface
     {
@@ -156,7 +155,7 @@ class Category
     /**
      * Setter for Updated at.
      *
-     * @param \DateTimeInterface $updatedAt Updated at
+     * @param DateTimeInterface $updatedAt Updated at
      */
     public function setUpdatedAt(DateTimeInterface $updatedAt): void
     {
@@ -183,9 +182,8 @@ class Category
         $this->title = $title;
     }
 
-
     /**
-     * @return string|null
+     * @return $this
      */
     public function getCode(): ?string
     {

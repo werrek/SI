@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
+use App\Service\TaskService;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,11 +26,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class TaskController extends AbstractController
 {
     /**
+     * Task service.
+     *
+     * @var \App\Service\TaskService
+     */
+    private $taskService;
+
+    /**
+     * TaskController constructor.
+     *
+     * @param \App\Service\TaskService $taskService Task service
+     */
+    public function __construct(TaskService $taskService)
+    {
+        $this->taskService = $taskService;
+    }
+
+    /**
      * Index action.
      *
-     * @param Request            $request           HTTP request
-     * @param TaskRepository     $taskRepository    Task repository
-     * @param PaginatorInterface $paginator         Paginator
+     * @param Request            $request        HTTP request
+     * @param TaskRepository     $taskRepository Task repository
+     * @param PaginatorInterface $paginator      Paginator
      *
      * @return Response HTTP response
      *
@@ -77,8 +95,8 @@ class TaskController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request           $request           HTTP request
-     * @param TaskRepository    $taskrepository    Task repository
+     * @param Request        $request        HTTP request
+     * @param TaskRepository $taskrepository Task repository
      *
      * @return Response HTTP response
      *
@@ -114,9 +132,9 @@ class TaskController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request           $request           HTTP request
-     * @param Task              $task              Task entity
-     * @param TaskRepository    $taskRepository    Task repository
+     * @param Request        $request        HTTP request
+     * @param Task           $task           Task entity
+     * @param TaskRepository $taskRepository Task repository
      *
      * @return Response HTTP response
      *
@@ -155,9 +173,9 @@ class TaskController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request           $request           HTTP request
-     * @param Task              $task              Category entity
-     * @param TaskRepository    $taskRepository    Category repository
+     * @param Request        $request        HTTP request
+     * @param Task           $task           Category entity
+     * @param TaskRepository $taskRepository Category repository
      *
      * @return Response HTTP response
      *

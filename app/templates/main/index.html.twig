@@ -8,7 +8,6 @@
     <div class="title_of_page">
         <h1>{{ 'title_notes_list'|trans }}</h1>
     </div>
-    <h3>{{ 'title_note_list'|trans }}</h3>
     {% if pagination is defined and pagination.items|length %}
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
@@ -25,7 +24,7 @@
             </thead>
             <tbody>
             {% for note in pagination.items %}
-                {% if date(note.date) < date() and date(note.date) > date('-7days') %}
+                {% if date(note.date) < date() and date(note.date) > date('-14days') %}
                     <tr>
                         <td>{{ note.title }}</td>
                         <td>{{ note.description }}</td>
@@ -49,4 +48,5 @@
             {{ 'message_empty_list'|trans }}
         </p>
     {% endif %}
+
 {% endblock %}

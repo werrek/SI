@@ -23,9 +23,9 @@ class MainController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request            $request         HTTP request
-     * @param MainRepository     $noteRepository  Note repository
-     * @param PaginatorInterface $paginator       Paginator
+     * @param Request            $request        HTTP request
+     * @param MainRepository     $noteRepository Note repository
+     * @param PaginatorInterface $paginator      Paginator
      *
      * @return Response HTTP response
      *

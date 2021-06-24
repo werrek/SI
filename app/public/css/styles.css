@@ -1,0 +1,111 @@
+*{
+    box-sizing: border-box;
+}
+a{
+    font-weight: bold;
+}
+label{
+    margin: 3px;
+}
+.save{
+    margin-right: 40px;
+}
+
+.sign{
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.right{
+    position: absolute;
+    right: 40px;
+    top: 10%;
+}
+.right_element{
+    position: absolute;
+    right: 40px;
+    top: 8px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 0;
+    padding: 10px;
+    color: blue;
+    background: rgba(255,255,255,0.9);
+    border-radius: 30px;
+    transition: 0.2s linear;
+}
+.add_ico{
+     transition: 0.2s linear;
+     width: 40px;
+     opacity: 80%;
+     position: absolute;
+     right: 350px;
+     top: 80px;
+     z-index: 0;
+ }
+.add_icon{
+    transition: 0.2s linear;
+    width: 40px;
+    opacity: 80%;
+    position: absolute;
+    right: 70px;
+    top: 80px;
+    z-index: 0;
+}
+.right_element:hover{
+    background:rgba(255,255,255,1) ;
+}
+.add_icon:hover{
+    opacity: 100%;
+}
+.delete_icon:hover{
+    opacity: 100%;
+}
+.title_of_page{
+    margin: 20px 0;
+}
+
+.show_item{
+    padding: 5px 15px;
+    margin-right: 10px;
+    color: blue;
+    background: white;
+    border: 2px whitesmoke solid;
+    border-radius: 25px;
+
+}
+.delete_icon{
+     transition: 0.2s linear;
+     width: 25px;
+     opacity: 80%;
+ }
+.delete_item{
+    color: white;
+    background: #ff5232;
+    border: 2px red solid;
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin-right: 10px;
+}
+
+.edit_item{
+    color: white;
+    background: #f8ff9d;
+    border: 2px yellow solid;
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin-right: 10px;
+}
+
+.create_item{
+     color: white;
+     background: #90ff77;
+     border: 2px green solid;
+     border-radius: 25px;
+     padding: 5px 15px;
+     margin-right: 10px;
+     position: absolute;
+     right: 0;
+     top: 10px;
+ }
+

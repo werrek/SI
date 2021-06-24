@@ -8,13 +8,7 @@
         <div class="alert alert-danger">{{ 'error_message_loggin'|trans }}</div>
     {% endif %}
 
-{#    {% if app.user %}#}
-{#        <div class="mb-3">#}
-{#            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>#}
-{#        </div>#}
-{#    {% endif %}#}
-
-    <h1 class="h3 mb-3 font-weight-normal">{{ 'Sign_in_message'|trans }}</h1>
+    <h1 class="sign">{{ 'Sign_in_message'|trans }}</h1>
     <label for="inputEmail">{{ 'Email'|trans }}</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
     <label for="inputPassword">{{ 'Password'|trans }}</label>

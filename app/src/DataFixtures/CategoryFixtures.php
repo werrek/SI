@@ -22,7 +22,7 @@ class CategoryFixtures extends AbstractBaseFixtures
      */
     public function loadData(ObjectManager $manager): void
     {
-        $this->createMany(10, 'categories', function ($i) {
+        $this->createMany(20, 'categories', function () {
             $category = new Category();
             $category->setTitle($this->faker->word);
             $category->setCreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));

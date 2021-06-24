@@ -5,13 +5,14 @@
 
 namespace App\Controller;
 
-use App\Form\CategoryType;
 use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Service\CategoryService;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,6 +23,23 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CategoryController extends AbstractController
 {
+    /**
+     * Category service.
+     *
+     * @var CategoryService
+     */
+    private $categoryService;
+
+    /**
+     * CategoryController constructor.
+     *
+     * @param CategoryService $categoryService Category service
+     */
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Index action.
      *
@@ -72,6 +90,7 @@ class CategoryController extends AbstractController
             ['category' => $category]
         );
     }
+
     /**
      * Create action.
      *

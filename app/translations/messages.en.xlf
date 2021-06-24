@@ -118,8 +118,8 @@
                 <source>category_name</source>
                 <target>Category name</target>
             </trans-unit>
-            <trans-unit id="label_earch">
-                <source>label_earch</source>
+            <trans-unit id="label_search">
+                <source>label_search</source>
                 <target>Search</target>
             </trans-unit>
             <trans-unit id="title_note_edit">

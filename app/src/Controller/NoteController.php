@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Note;
 use App\Form\NoteType;
 use App\Repository\NoteRepository;
+use App\Service\NoteService;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,11 +26,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class NoteController extends AbstractController
 {
     /**
+     * Note service.
+     *
+     * @var NoteService
+     */
+    private $noteService;
+
+    /**
+     * NoteController constructor.
+     *
+     * @param NoteService $noteService Note service
+     */
+    public function __construct(NoteService $noteService)
+    {
+        $this->noteService = $noteService;
+    }
+
+    /**
      * Index action.
      *
-     * @param Request            $request         HTTP request
-     * @param NoteRepository    $noteRepository Note repository
-     * @param PaginatorInterface $paginator       Paginator
+     * @param Request            $request        HTTP request
+     * @param NoteRepository     $noteRepository Note repository
+     * @param PaginatorInterface $paginator      Paginator
      *
      * @return Response HTTP response
      *
@@ -81,7 +99,7 @@ class NoteController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request         $request         HTTP request
+     * @param Request        $request        HTTP request
      * @param NoteRepository $noteRepository Note repository
      *
      * @return Response HTTP response
@@ -117,8 +135,8 @@ class NoteController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request         $request         HTTP request
-     * @param Note            $Note            Note entity
+     * @param Request        $request        HTTP request
+     * @param Note           $note           Note entity
      * @param NoteRepository $noteRepository Note repository
      *
      * @return Response HTTP response
@@ -130,7 +148,7 @@ class NoteController extends AbstractController
      *     "/{id}/edit",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
-     *     name="note_edit",
+     *     name="event_edit",
      * )
      */
     public function edit(Request $request, Note $note, NoteRepository $noteRepository): Response
@@ -157,9 +175,9 @@ class NoteController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request         $request         HTTP request
-     * @param Note            $note            Note entity
-     * @param NoteRepository  $noteRepository  Note repository
+     * @param Request        $request        HTTP request
+     * @param Note           $note           Note entity
+     * @param NoteRepository $noteRepository Note repository
      *
      * @return Response HTTP response
      *
