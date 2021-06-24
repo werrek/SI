@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class Note.
+ *
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  * @ORM\Table(name="notes")
  */
