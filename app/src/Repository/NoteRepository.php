@@ -1,6 +1,6 @@
 <?php
 /**
- * Event repository.
+ * Note repository.
  */
 
 namespace App\Repository;
@@ -34,7 +34,7 @@ class NoteRepository extends ServiceEntityRepository
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
-     * EventRepository constructor.
+     * NoteRepository constructor.
      *
      * @param ManagerRegistry $registry Manager registry
      */

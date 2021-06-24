@@ -148,7 +148,7 @@ class NoteController extends AbstractController
      *     "/{id}/edit",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
-     *     name="event_edit",
+     *     name="note_edit",
      * )
      */
     public function edit(Request $request, Note $note, NoteRepository $noteRepository): Response
