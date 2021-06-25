@@ -200,7 +200,11 @@
             </trans-unit>
             <trans-unit id="message.deleted_successfully">
                 <source>message.deleted_successfully</source>
-                <target>Usunięto zadanie</target>
+                <target>Usunięto</target>
+            </trans-unit>
+            <trans-unit id="message_category_contains_tasks">
+                <source>message_category_contains_tasks</source>
+                <target>Nie możesz usunąć</target>
             </trans-unit>
             <trans-unit id="error_message_loggin">
                 <source>error_message_loggin</source>

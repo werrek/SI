@@ -6,6 +6,10 @@
                 <source>label_actions</source>
                 <target>Actions</target>
             </trans-unit>
+             <trans-unit id="message_category_contains_tasks">
+                            <source>message_category_contains_tasks</source>
+                            <target>not allowed</target>
+                        </trans-unit>
             <trans-unit id="label_id">
                 <source>label_id</source>
                 <target>Id</target>
