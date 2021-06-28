@@ -48,7 +48,7 @@ class NoteService
      *
      * @param int $page Page number
      *
-     * @return \Knp\Component\Pager\Pagination\PaginationInterface Paginated list
+     * @return PaginationInterface Paginated list
      */
     public function createPaginatedList(int $page): PaginationInterface
     {
@@ -60,7 +60,7 @@ class NoteService
     }
 
     /**
-     * Save category.
+     * Save note.
      *
      * @param Note $note Note entity
      *
@@ -73,7 +73,7 @@ class NoteService
     }
 
     /**
-     * Delete category.
+     * Delete note.
      *
      * @param Note $note Note entity
      *

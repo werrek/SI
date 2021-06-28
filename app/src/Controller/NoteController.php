@@ -7,11 +7,9 @@ namespace App\Controller;
 
 use App\Entity\Note;
 use App\Form\NoteType;
-use App\Repository\NoteRepository;
 use App\Service\NoteService;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,9 +43,7 @@ class NoteController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request            $request        HTTP request
-     * @param NoteRepository     $noteRepository Note repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      *
@@ -57,19 +53,13 @@ class NoteController extends AbstractController
      *     name="note_index",
      * )
      */
-    public function index(Request $request, NoteRepository $noteRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $noteRepository->queryLikeCategory($request->get('note_category')),
-            $request->query->getInt('page', 1),
-            NoteRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
-
         return $this->render(
             'note/index.html.twig',
             [
-                'pagination' => $pagination,
                 'note_category' => $request->get('note_category'),
+                'pagination' => $this->noteService->createPaginatedList($request->query->getInt('page', 1)),
             ]
         );
     }
@@ -99,8 +89,7 @@ class NoteController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request        $request        HTTP request
-     * @param NoteRepository $noteRepository Note repository
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      *
@@ -113,14 +102,14 @@ class NoteController extends AbstractController
      *     name="note_create",
      * )
      */
-    public function create(Request $request, NoteRepository $noteRepository): Response
+    public function create(Request $request): Response
     {
         $note = new Note();
         $form = $this->createForm(NoteType::class, $note);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $noteRepository->save($note);
+            $this->noteService->save($note);
             $this->addFlash('success', 'message_created_successfully');
 
             return $this->redirectToRoute('note_index');
@@ -135,9 +124,8 @@ class NoteController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request        $request        HTTP request
-     * @param Note           $note           Note entity
-     * @param NoteRepository $noteRepository Note repository
+     * @param Request $request HTTP request
+     * @param Note    $note    Note entity
      *
      * @return Response HTTP response
      *
@@ -151,13 +139,13 @@ class NoteController extends AbstractController
      *     name="note_edit",
      * )
      */
-    public function edit(Request $request, Note $note, NoteRepository $noteRepository): Response
+    public function edit(Request $request, Note $note): Response
     {
         $form = $this->createForm(NoteType::class, $note, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $noteRepository->save($note);
+            $this->noteService->save($note);
             $this->addFlash('success', 'message_updated_successfully');
 
             return $this->redirectToRoute('note_index');
@@ -175,9 +163,8 @@ class NoteController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request        $request        HTTP request
-     * @param Note           $note           Note entity
-     * @param NoteRepository $noteRepository Note repository
+     * @param Request $request HTTP request
+     * @param Note    $note    Note entity
      *
      * @return Response HTTP response
      *
@@ -191,7 +178,7 @@ class NoteController extends AbstractController
      *     name="note_delete",
      * )
      */
-    public function delete(Request $request, Note $note, NoteRepository $noteRepository): Response
+    public function delete(Request $request, Note $note): Response
     {
         $form = $this->createForm(FormType::class, $note, ['method' => 'DELETE']);
         $form->handleRequest($request);
@@ -201,7 +188,7 @@ class NoteController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $noteRepository->delete($note);
+            $this->noteService->delete($note);
             $this->addFlash('success', 'message_deleted_successfully');
 
             return $this->redirectToRoute('note_index');

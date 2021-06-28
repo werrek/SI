@@ -49,6 +49,8 @@ class MainRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('partial note.{id, title, description, date}', 'partial category.{id, title}')
+            ->join('note.category', 'category')
             ->orderBy('note.date', 'DESC');
     }
 

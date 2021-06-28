@@ -30,7 +30,6 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label_title'|trans, 'note.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label_description'|trans, 'note.description') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_date'|trans, 'note.date') }}</th>
                 <th>{{ 'label_category'|trans }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
@@ -41,7 +40,6 @@
             {% for note in pagination.items %}
                 <tr>
                     <td>{{ note.title }}</td>
-                    <td>{{ note.description }}</td>
                     <td>{{ note.date|format_datetime('full') }}</td>
                     <td>{{ note.category.title }}</td>
                     <td>
