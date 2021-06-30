@@ -2,6 +2,23 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="pl" datatype="plaintext" original="file.ext">
         <body>
+
+            <trans-unit id="title_user_edit_password">
+                 <source>title_user_edit_password</source>
+                 <target>Edit profile</target>
+            </trans-unit>
+            <trans-unit id="label_email">
+                 <source>label_email</source>
+                 <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label_password">
+                 <source>label_password</source>
+                 <target>Enter new password</target>
+            </trans-unit>
+            <trans-unit id="label_password_repeat">
+                  <source>label_password_repeat</source>
+                  <target>Repeat password</target>
+            </trans-unit>
             <trans-unit id="label_actions">
                 <source>label_actions</source>
                 <target>Actions</target>

@@ -11,20 +11,21 @@
 <body>
 <div class="container-fluid">
     {% include 'default/_flash_messages.html.twig' %}
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <nav class="navbar navbar-expand-sm bg-primary navbar-dark sticky-top">
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="{{ url('main_index') }}">{{ 'label_main_page'|trans }} <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="{{ url('note_index') }}">{{ 'label_notes'|trans }}</a>
-                        <a class="nav-item nav-link" href="{{ url('task_index') }}">{{ 'label_tasks'|trans }}</a>
-                        <a class="nav-item nav-link " href="{{ url('category_index') }}">{{ 'label_categories'|trans }}</a>
-                        <a href="{{ url('app_logout') }}"><div class="right_element">{{ 'action_logout'|trans }}</div></a>
-                    </div>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark sticky-top">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="{{ url('main_index') }}">{{ 'label_main_page'|trans }} <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="{{ url('note_index') }}">{{ 'label_notes'|trans }}</a>
+                    <a class="nav-item nav-link" href="{{ url('task_index') }}">{{ 'label_tasks'|trans }}</a>
+                    <a class="nav-item nav-link " href="{{ url('category_index') }}">{{ 'label_categories'|trans }}</a>
+                    <a class="nav-item nav-link " href="{{ url('user_edit_password') }}">{{ 'title_user_edit_password'|trans }}</a>
+                    <a href="{{ url('app_logout') }}"><div class="right_element">{{ 'action_logout'|trans }}</div></a>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-        {% endif %}
+    {% endif %}
 
     {% block body %}{% endblock %}
 </div>

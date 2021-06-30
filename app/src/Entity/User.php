@@ -8,7 +8,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -91,8 +90,6 @@ class User implements UserInterface
 
      * @Assert\NotBlank
      * @Assert\Type(type="string")
-     *
-     * @SecurityAssert\UserPassword
      */
     private $password;
 
