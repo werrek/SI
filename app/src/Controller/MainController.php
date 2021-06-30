@@ -1,6 +1,6 @@
 <?php
 /**
- * Note controller.
+ * Main controller.
  */
 
 namespace App\Controller;
